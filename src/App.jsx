@@ -1,10 +1,53 @@
+import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import './App.css'
+import Header from './components/Header'
+import Home from './components/Home'
+import Movies from './components/Movies'
+import TvShows from './components/TvShows'
+import MyList from './components/MyList'
 
 function App() {
   return (
-    <div className="">
-      <h1 className="text-blue-600 text-4xl">MovieFlix</h1>
-    </div>
+    <BrowserRouter>
+      <Routes>
+        <Route
+          path="/"
+          element={
+            <>
+              <Header />
+              <Home />
+            </>
+          }
+        />
+        <Route
+          path="/movies"
+          element={
+            <>
+              <Header />
+              <Movies />
+            </>
+          }
+        />
+        <Route
+          path="/tvshows"
+          element={
+            <>
+              <Header />
+              <TvShows />
+            </>
+          }
+        />
+        <Route
+          path="/mylist"
+          element={
+            <>
+              <Header />
+              <MyList />
+            </>
+          }
+        />
+      </Routes>
+    </BrowserRouter>
   )
 }
 
