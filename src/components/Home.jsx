@@ -1,10 +1,11 @@
 import React from 'react'
 import { CiPlay1 } from 'react-icons/ci'
 import { IoIosInformationCircleOutline } from 'react-icons/io'
+import TrendingNow from './TrendingNow'
 
 const Home = () => {
   return (
-    <div className="bg-[#111827] p-9">
+    <div className="bg-[#111827] p-9 h-full">
       <div className='bg-[url("https://c8.alamy.com/comp/2AA0W9D/picturehouse-cinema-foyer-picturehouse-central-cinema-near-piccadilly-circus-in-londons-west-end-2AA0W9D.jpg")] w-full h-164 bg-cover bg-center rounded-xl'>
         <div className="grid content-center bg-black/30 h-full w-full rounded-xl">
           <div className="px-15 pt-35 max-md:text-center">
@@ -35,6 +36,7 @@ const Home = () => {
           </div>
         </div>
       </div>
+      <TrendingNow />
     </div>
   )
 }
