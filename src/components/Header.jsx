@@ -9,7 +9,7 @@ const Header = () => {
   const [showInput, setShowInput] = useState(false)
   const [isOpen, setIsOpen] = useState(false)
   return (
-    <div className="flex justify-between bg-[#111827]">
+    <div className="flex justify-between bg-[#1e242e] sticky top-0">
       <div className="p-5 flex">
         <HiOutlineFilm className="text-[#EF4444] text-3xl mx-2" />
         <h1 className="text-xl text-white font-bold">MovieFlix</h1>
