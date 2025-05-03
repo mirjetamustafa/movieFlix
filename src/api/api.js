@@ -15,7 +15,15 @@ export const getActionMovies = async () => {
   return data.results
 }
 
-export const getComedyMovies = async () => {
+export const getAnimationMovies = async () => {
+  const response = await fetch(
+    `${BASE_URL}/discover/movie?api_key=${API_KEY}&with_genres=16`
+  )
+  const data = await response.json()
+  return data.results
+}
+
+export const getDramaMovies = async () => {
   const response = await fetch(
     `${BASE_URL}/discover/movie?api_key=${API_KEY}&with_genres=35`
   )

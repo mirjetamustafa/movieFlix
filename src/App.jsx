@@ -6,12 +6,16 @@ import Home from './components/Home'
 import Movies from './components/Movies'
 import TvShows from './components/TvShows'
 import MyList from './components/MyList'
-import { getPopularMovies, getActionMovies, getComedyMovies } from './api/api'
+import {
+  getPopularMovies,
+  getActionMovies,
+  getAnimationMovies,
+} from './api/api'
 
 function App() {
   const [movies, setMovies] = useState([])
   const [action, setAction] = useState([])
-  const [comedy, setComedy] = useState([])
+  const [animation, setAnimation] = useState([])
   const [error, setError] = useState(null)
 
   useEffect(() => {
@@ -41,16 +45,16 @@ function App() {
   }, [])
 
   useEffect(() => {
-    const loadComedyMovies = async () => {
+    const loadAnimationMovies = async () => {
       try {
-        const comedyMovies = await getComedyMovies()
-        setComedy(comedyMovies)
+        const animationMovies = await getAnimationMovies()
+        setAnimation(animationMovies)
       } catch (err) {
         console.log(err)
         setError('Failed to load movies')
       }
     }
-    loadComedyMovies()
+    loadAnimationMovies()
   }, [])
 
   return (
@@ -61,7 +65,7 @@ function App() {
           element={
             <>
               <Header />
-              <Home movies={movies} action={action} comedy={comedy} />
+              <Home movies={movies} action={action} animation={animation} />
             </>
           }
         />

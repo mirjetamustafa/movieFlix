@@ -1,30 +1,32 @@
 import React from 'react'
 
-const ComedyMovies = ({ comedy }) => {
+const AnimationMovies = ({ animation }) => {
   return (
     <div className="py-15 bg-[#111827]">
-      <h1 className="text-white text-4xl font-bold">Comedy</h1>
+      <h1 className="text-white text-4xl font-bold">Animations</h1>
       <div className="grid md:grid-cols-4 grid-cols-2 gap-4 mt-9">
-        {comedy.map((comedies) => (
+        {animation.map((animations) => (
           <div
-            key={comedies.id}
+            key={animations.id}
             className="group relative items-center justify-center overflow-hidden cursor-pointer"
           >
             <div className="">
               <img
-                src={`https://image.tmdb.org/t/p/w500${comedies.poster_path}`}
-                alt={comedies.title}
+                src={`https://image.tmdb.org/t/p/w500${animations.poster_path}`}
+                alt={animations.title}
                 className="rounded-sm object-cover group-hover:scale-105 transition-transform duration-500"
               />
             </div>
 
             <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-transparent group-hover:from-black/30 group-hover:via-black/40 group-hover:to-black/40"></div>
             <div className="absolute inset-0 grid content-end py-9 px-9 text-white group-hover:opacity-100 opacity-0 duration-300 cursor-pointer transition-all">
-              <h2 className="text-lg font-bold">{comedies.title}</h2>
+              <h2 className="text-lg font-bold">{animations.title}</h2>
               <div className="flex">
-                <p className="text-sm">{comedies.release_date?.slice(0, 4)}</p>
+                <p className="text-sm">
+                  {animations.release_date?.slice(0, 4)}
+                </p>
                 <p className="bg-red-600 px-2 py-1 mx-2 text-xs rounded-sm">
-                  {comedies.adult ? '18+' : 'PG-13'}
+                  {animations.adult ? '18+' : 'PG-13'}
                 </p>
               </div>
               <button className="bg-red-600 rounded-full md:px-25 px-9 py-1 mt-3 cursor-pointer hover:bg-red-700">
@@ -38,4 +40,4 @@ const ComedyMovies = ({ comedy }) => {
   )
 }
 
-export default ComedyMovies
+export default AnimationMovies
