@@ -10,12 +10,14 @@ import {
   getPopularMovies,
   getActionMovies,
   getAnimationMovies,
+  getAllMovies,
 } from './api/api'
 
 function App() {
   const [movies, setMovies] = useState([])
   const [action, setAction] = useState([])
   const [animation, setAnimation] = useState([])
+  const [allMovies, setAllMovies] = useState([])
   const [error, setError] = useState(null)
 
   useEffect(() => {
@@ -57,6 +59,19 @@ function App() {
     loadAnimationMovies()
   }, [])
 
+  useEffect(() => {
+    const allMovie = async () => {
+      try {
+        const allMovie = await getAllMovies()
+        setAllMovies(allMovie)
+      } catch (err) {
+        console.log(err)
+        setError('Failed to load movies')
+      }
+    }
+    allMovie()
+  }, [])
+
   return (
     <BrowserRouter>
       <Routes>
@@ -74,7 +89,7 @@ function App() {
           element={
             <>
               <Header />
-              <Movies />
+              <Movies movies={movies} allMovies={allMovies} />
             </>
           }
         />

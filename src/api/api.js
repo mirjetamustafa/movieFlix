@@ -23,10 +23,8 @@ export const getAnimationMovies = async () => {
   return data.results
 }
 
-export const getDramaMovies = async () => {
-  const response = await fetch(
-    `${BASE_URL}/discover/movie?api_key=${API_KEY}&with_genres=35`
-  )
+export const getAllMovies = async () => {
+  const response = await fetch(` ${BASE_URL}/discover/movie?api_key=${API_KEY}`)
   const data = await response.json()
   return data.results
 }
@@ -48,7 +46,3 @@ export const searchMovies = async (query) => {
   const data = await response.json()
   return data.results
 }
-
-// `https://api.themoviedb.org/3/genre/tv/list?api_key=bf3c87012c2b0cddaf67d94a061d1c2d&language=en-US`
-// `https://api.themoviedb.org/3/discover/tv?api_key=bf3c87012c2b0cddaf67d94a061d1c2d&with_genres=18`
-// `https://api.themoviedb.org/3/tv/popular?api_key=bf3c87012c2b0cddaf67d94a061d1c2d`
