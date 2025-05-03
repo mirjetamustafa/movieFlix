@@ -2,8 +2,10 @@ import React from 'react'
 import { CiPlay1 } from 'react-icons/ci'
 import { IoIosInformationCircleOutline } from 'react-icons/io'
 import TrendingNow from './TrendingNow'
+import ActionMovies from './ActionMovies'
+import ComedyMovies from './ComedyMovies'
 
-const Home = ({ movies }) => {
+const Home = ({ movies, action, comedy }) => {
   const backgroundImageUrl = movies?.[0]?.backdrop_path
     ? `https://image.tmdb.org/t/p/original${movies[0].backdrop_path}`
     : null
@@ -51,6 +53,8 @@ const Home = ({ movies }) => {
       </div>
 
       <TrendingNow movies={movies} />
+      <ComedyMovies comedy={comedy} />
+      <ActionMovies action={action} />
     </div>
   )
 }
