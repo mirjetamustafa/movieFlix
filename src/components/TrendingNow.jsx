@@ -1,4 +1,4 @@
-const TrendingNow = ({ movies }) => {
+const TrendingNow = ({ movies, genresList, getGenreNames }) => {
   return (
     <div className="py-15 bg-[#111827]">
       <h1 className="text-white text-4xl font-bold">Trending Now</h1>
@@ -48,6 +48,9 @@ const TrendingNow = ({ movies }) => {
                 <p className="text-sm">{movie.release_date?.slice(0, 4)}</p>
                 <p className="bg-red-600 px-2 py-1 mx-2 text-xs rounded-sm">
                   {movie.adult ? '18+' : 'PG-13'}
+                </p>
+                <p className="text-white text-sm">
+                  {getGenreNames(movie.genre_ids, genresList)}
                 </p>
               </div>
               <button className="bg-red-600 rounded-full md:px-25 px-9 py-1 mt-3 cursor-pointer hover:bg-red-700">

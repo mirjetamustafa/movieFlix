@@ -1,6 +1,6 @@
 import React from 'react'
 
-const ActionMovies = ({ action }) => {
+const ActionMovies = ({ action, genresList, getGenreNames }) => {
   return (
     <div className="py-15 bg-[#111827]">
       <h1 className="text-white text-4xl font-bold">Action & Adventure</h1>
@@ -25,6 +25,9 @@ const ActionMovies = ({ action }) => {
                 <p className="text-sm">{actions.release_date?.slice(0, 4)}</p>
                 <p className="bg-red-600 px-2 py-1 mx-2 text-xs rounded-sm">
                   {actions.adult ? '18+' : 'PG-13'}
+                </p>
+                <p className="text-white text-sm">
+                  {getGenreNames(actions.genre_ids, genresList)}
                 </p>
               </div>
               <button className="bg-red-600 rounded-full md:px-25 px-9 py-1 mt-3 cursor-pointer hover:bg-red-700">
