@@ -11,6 +11,7 @@ import {
   getActionMovies,
   getAnimationMovies,
   getAllMovies,
+  getTvShows,
 } from './api/api'
 
 function App() {
@@ -18,6 +19,7 @@ function App() {
   const [action, setAction] = useState([])
   const [animation, setAnimation] = useState([])
   const [allMovies, setAllMovies] = useState([])
+  const [tvShows, setTvShows] = useState([])
   const [error, setError] = useState(null)
 
   useEffect(() => {
@@ -72,6 +74,19 @@ function App() {
     allMovie()
   }, [])
 
+  useEffect(() => {
+    const allTvShows = async () => {
+      try {
+        const allTvShows = await getTvShows()
+        setTvShows(allTvShows)
+      } catch (err) {
+        console.log(err)
+        setError('Failed to load movies')
+      }
+    }
+    allTvShows()
+  }, [])
+
   return (
     <BrowserRouter>
       <Routes>
@@ -98,7 +113,7 @@ function App() {
           element={
             <>
               <Header />
-              <TvShows />
+              <TvShows tvShows={tvShows} />
             </>
           }
         />

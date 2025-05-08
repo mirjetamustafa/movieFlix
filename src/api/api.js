@@ -29,10 +29,16 @@ export const getAllMovies = async () => {
   return data.results
 }
 
+// export const getTvShows = async () => {
+//   const response = await fetch(
+//     `${BASE_URL}/discover/tv?api_key=${API_KEY}&with_genres=18`
+//   )
+//   const data = await response.json()
+//   return data.results
+// }
+
 export const getTvShows = async () => {
-  const response = await fetch(
-    `${BASE_URL}/discover/tv?api_key=${API_KEY}&with_genres=18`
-  )
+  const response = await fetch(`${BASE_URL}/discover/tv?api_key=${API_KEY}`)
   const data = await response.json()
   return data.results
 }
