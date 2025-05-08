@@ -1,4 +1,5 @@
 import React from 'react'
+import BackgroundShows from './BackgroundShows'
 import { getGenreNames } from './utils'
 
 const TvShows = ({ tvShows }) => {
@@ -71,11 +72,11 @@ const TvShows = ({ tvShows }) => {
 
   return (
     <div className="bg-[#111827] p-9 h-full">
-      {/* <BackgroundMovies
-        movies={movies}
+      <BackgroundShows
+        tvShows={tvShows}
         getGenreNames={getGenreNames}
-        genresList={genresList}
-      /> */}
+        genresTvList={genresTvList}
+      />
 
       <div className="py-15 bg-[#111827]">
         <h1 className="text-white text-4xl font-bold">All Shows</h1>
@@ -94,9 +95,11 @@ const TvShows = ({ tvShows }) => {
 
                 <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-transparent group-hover:from-black/30 group-hover:via-black/40 group-hover:to-black/40" />
                 <div className="absolute inset-0 grid content-end py-9 px-9 text-white group-hover:opacity-100 opacity-0 duration-300 cursor-pointer transition-all">
-                  <h2 className="text-lg font-bold">{shows.title}</h2>
+                  <h2 className="text-lg font-bold">{shows.original_name}</h2>
                   <div className="flex">
-                    <p className="text-sm">{shows.release_date?.slice(0, 4)}</p>
+                    <p className="text-sm">
+                      {shows.first_air_date?.slice(0, 4)}
+                    </p>
                     <p className="bg-red-600 px-2 py-1 mx-2 text-xs rounded-sm">
                       {shows.adult ? '18+' : 'PG-13'}
                     </p>
