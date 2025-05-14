@@ -5,7 +5,7 @@ import { RxHamburgerMenu } from 'react-icons/rx'
 import { IoMdClose } from 'react-icons/io'
 import { Link } from 'react-router-dom'
 
-const Header = () => {
+const Header = ({ searchQuery, setSearchQuery, handleSearch }) => {
   const [showInput, setShowInput] = useState(false)
   const [isOpen, setIsOpen] = useState(false)
   return (
@@ -95,20 +95,28 @@ const Header = () => {
             My List
           </Link>
         </ul>
-        <div className=" flex justify-end max-md:hidden">
-          <input
-            type="text"
-            className={`relative bg-[#374151] transiton-all duration-300 ease-in-out ml-2 px-3 py-2 outline outline-[#374151] focus:outline-[#EF4444] focus:outline-2 rounded-full text-white placeholder:text-gray-400 ${
-              showInput ? 'w-60' : 'w-0 opacity-0'
-            }`}
-            placeholder="Search Movies..."
-          />
-          <button
-            onClick={() => setShowInput(!showInput)}
-            className="absolute p-2 -mt-1 text-white hover:bg-white/15 rounded-full focus:outline-none cursor-pointer transition delay-150 duration-300 ease-in-out"
+        <div>
+          <form
+            onSubmit={handleSearch}
+            className=" flex justify-end max-md:hidden"
           >
-            <CiSearch size={28} />
-          </button>
+            <input
+              type="text"
+              value={searchQuery}
+              onChange={(e) => setSearchQuery(e.target.value)}
+              className={`relative bg-[#374151] transiton-all duration-300 ease-in-out ml-2 px-3 py-2 outline outline-[#374151] focus:outline-[#EF4444] focus:outline-2 rounded-full text-white placeholder:text-gray-400 ${
+                showInput ? 'w-60' : 'w-60'
+              }`}
+              placeholder="Search Movies..."
+            />
+            <button
+              type="submit"
+              // onClick={() => setShowInput(!showInput)}
+              className="absolute p-2 -mt-1 text-white hover:bg-white/15 rounded-full focus:outline-none cursor-pointer transition delay-150 duration-300 ease-in-out"
+            >
+              <CiSearch size={28} />
+            </button>
+          </form>
         </div>
       </div>
     </div>

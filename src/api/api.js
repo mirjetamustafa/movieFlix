@@ -43,7 +43,7 @@ export const getTvShows = async () => {
   return data.results
 }
 
-export const searchMovies = async (query) => {
+export const searchAll = async (query) => {
   const response = await fetch(
     `${BASE_URL}/search/movie?api_key=${API_KEY}&query=${encodeURIComponent(
       query

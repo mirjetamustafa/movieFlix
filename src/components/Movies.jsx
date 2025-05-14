@@ -55,7 +55,7 @@ const Movies = ({ movies, allMovies }) => {
                     <p className="text-sm">
                       {allMovie.release_date?.slice(0, 4)}
                     </p>
-                    <p className="bg-red-600 px-2 py-1 mx-2 text-xs rounded-sm">
+                    <p className="bg-red-600 px-2 py-1 mx-2 text-xs rounded-sm ">
                       {allMovie.adult ? '18+' : 'PG-13'}
                     </p>
                     <p className="text-white text-sm">

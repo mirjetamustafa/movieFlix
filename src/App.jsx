@@ -12,6 +12,7 @@ import {
   getAnimationMovies,
   getAllMovies,
   getTvShows,
+  searchAll,
 } from './api/api'
 
 function App() {
@@ -21,6 +22,8 @@ function App() {
   const [allMovies, setAllMovies] = useState([])
   const [tvShows, setTvShows] = useState([])
   const [error, setError] = useState(null)
+  const [loading, setLoading] = useState(false)
+  const [searchQuery, setSearchQuery] = useState('')
 
   useEffect(() => {
     const loadTrendingMovies = async () => {
@@ -87,6 +90,23 @@ function App() {
     allTvShows()
   }, [])
 
+  const handleSearch = async (e) => {
+    e.preventDefault()
+    if (!searchQuery.trim()) return
+    if (loading) return
+
+    setLoading(true)
+
+    try {
+      const searchResult = await searchAll(searchQuery)
+      setMovies(searchResult)
+      setError(null)
+    } catch (err) {
+      console.log(err)
+      setError('Failed to search...')
+    }
+  }
+
   return (
     <BrowserRouter>
       <Routes>
@@ -94,8 +114,17 @@ function App() {
           path="/"
           element={
             <>
-              <Header />
-              <Home movies={movies} action={action} animation={animation} />
+              <Header
+                searchQuery={searchQuery}
+                setSearchQuery={setSearchQuery}
+                handleSearch={handleSearch}
+              />
+              <Home
+                movies={movies}
+                action={action}
+                animation={animation}
+                loading={loading}
+              />
             </>
           }
         />
@@ -103,7 +132,11 @@ function App() {
           path="/movies"
           element={
             <>
-              <Header />
+              <Header
+                searchQuery={searchQuery}
+                setSearchQuery={setSearchQuery}
+                handleSearch={handleSearch}
+              />
               <Movies movies={movies} allMovies={allMovies} />
             </>
           }
@@ -112,7 +145,11 @@ function App() {
           path="/tvshows"
           element={
             <>
-              <Header />
+              <Header
+                searchQuery={searchQuery}
+                setSearchQuery={setSearchQuery}
+                handleSearch={handleSearch}
+              />
               <TvShows tvShows={tvShows} />
             </>
           }
@@ -121,7 +158,11 @@ function App() {
           path="/mylist"
           element={
             <>
-              <Header />
+              <Header
+                searchQuery={searchQuery}
+                setSearchQuery={setSearchQuery}
+                handleSearch={handleSearch}
+              />
               <MyList />
             </>
           }

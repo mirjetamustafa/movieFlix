@@ -34,7 +34,7 @@ const BackgroundMovies = ({ movies, getGenreNames, genresList }) => {
                 {getGenreNames(movie?.genre_ids, genresList)}
               </p>
             </div>
-            <p className="text-md text-white mt-3 pr-[50%]">
+            <p className="text-md text-white mt-3 md:pr-[50%]">
               {movie?.overview}
             </p>
             <div className="flex max-md:justify-center">
