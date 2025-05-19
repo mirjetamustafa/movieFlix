@@ -8,7 +8,7 @@ import BackgroundMovies from './BackgroundMovies'
 
 import { getGenreNames } from './utils'
 
-const Home = ({ movies, action, animation }) => {
+const Home = ({ movies, action, animation, searchQuery }) => {
   const genresList = [
     { id: 28, name: 'Action' },
     { id: 12, name: 'Adventure' },
@@ -37,22 +37,25 @@ const Home = ({ movies, action, animation }) => {
         genresList={genresList}
         getGenreNames={getGenreNames}
       />
-
       <TrendingNow
         movies={movies}
         genresList={genresList}
         getGenreNames={getGenreNames}
       />
-      <AnimationMovies
-        animation={animation}
-        genresList={genresList}
-        getGenreNames={getGenreNames}
-      />
-      <ActionMovies
-        action={action}
-        genresList={genresList}
-        getGenreNames={getGenreNames}
-      />
+      {!searchQuery && (
+        <>
+          <AnimationMovies
+            animation={animation}
+            genresList={genresList}
+            getGenreNames={getGenreNames}
+          />
+          <ActionMovies
+            action={action}
+            genresList={genresList}
+            getGenreNames={getGenreNames}
+          />
+        </>
+      )}
     </div>
   )
 }

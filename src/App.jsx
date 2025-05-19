@@ -14,6 +14,7 @@ import {
   getTvShows,
   searchAll,
 } from './api/api'
+import MoreInfo from './components/MoreInfo'
 
 function App() {
   const [movies, setMovies] = useState([])
@@ -124,6 +125,7 @@ function App() {
                 action={action}
                 animation={animation}
                 loading={loading}
+                searchQuery={searchQuery}
               />
             </>
           }
@@ -164,6 +166,19 @@ function App() {
                 handleSearch={handleSearch}
               />
               <MyList />
+            </>
+          }
+        />
+        <Route
+          path="/moreInfo"
+          element={
+            <>
+              <Header
+                searchQuery={searchQuery}
+                setSearchQuery={setSearchQuery}
+                handleSearch={handleSearch}
+              />
+              <MoreInfo />
             </>
           }
         />

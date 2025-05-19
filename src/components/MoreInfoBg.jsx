@@ -3,7 +3,7 @@ import { CiPlay1 } from 'react-icons/ci'
 import { IoIosInformationCircleOutline } from 'react-icons/io'
 import { Link } from 'react-router-dom'
 
-const BackgroundMovies = ({ movies, getGenreNames, genresList }) => {
+const MoreInfoBg = ({ movies, getGenreNames, genresList }) => {
   const movie = movies?.[0]
   const backgroundImageUrl = movie?.backdrop_path
     ? `https://image.tmdb.org/t/p/original${movie.backdrop_path}`
@@ -58,4 +58,4 @@ const BackgroundMovies = ({ movies, getGenreNames, genresList }) => {
   )
 }
 
-export default BackgroundMovies
+export default MoreInfoBg
