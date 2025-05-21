@@ -1,3 +1,5 @@
+import { Link } from 'react-router-dom'
+
 const TrendingNow = ({ movies, genresList, getGenreNames }) => {
   return (
     <div className="py-15 bg-[#111827]">
@@ -53,9 +55,13 @@ const TrendingNow = ({ movies, genresList, getGenreNames }) => {
                   {getGenreNames(movie.genre_ids, genresList)}
                 </p>
               </div>
-              <button className="bg-red-600 rounded-full md:px-25 px-9 py-1 mt-3 cursor-pointer hover:bg-red-700">
+              <Link
+                to={'/moreInfo'}
+                state={{ movie }}
+                className="bg-red-600 rounded-full md:px-25 px-9 py-1 mt-3 cursor-pointer hover:bg-red-700"
+              >
                 Play
-              </button>
+              </Link>
             </div>
           </div>
         ))}

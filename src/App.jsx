@@ -25,12 +25,14 @@ function App() {
   const [error, setError] = useState(null)
   const [loading, setLoading] = useState(false)
   const [searchQuery, setSearchQuery] = useState('')
+  const [selectedMovie, setSelectedMovie] = useState({})
 
   useEffect(() => {
     const loadTrendingMovies = async () => {
       try {
         const trendingMovies = await getPopularMovies()
         setMovies(trendingMovies)
+        setSelectedMovie(trendingMovies[0])
       } catch (err) {
         console.log(err)
         setError('Failed to load movies')
@@ -178,7 +180,7 @@ function App() {
                 setSearchQuery={setSearchQuery}
                 handleSearch={handleSearch}
               />
-              <MoreInfo />
+              <MoreInfo selectedMovie={selectedMovie} />
             </>
           }
         />
