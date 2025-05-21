@@ -6,6 +6,7 @@ import Home from './components/Home'
 import Movies from './components/Movies'
 import TvShows from './components/TvShows'
 import MyList from './components/MyList'
+
 import {
   getPopularMovies,
   getActionMovies,
