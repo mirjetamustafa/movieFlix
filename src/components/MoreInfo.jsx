@@ -7,7 +7,7 @@ import { AiOutlinePlus } from 'react-icons/ai'
 import { BiLike } from 'react-icons/bi'
 import { CiSaveUp2 } from 'react-icons/ci'
 
-const MoreInfo = ({}) => {
+const MoreInfo = ({ selectedMovie }) => {
   const genresList = [
     { id: 28, name: 'Action' },
     { id: 12, name: 'Adventure' },
@@ -29,6 +29,21 @@ const MoreInfo = ({}) => {
     { id: 10752, name: 'War' },
     { id: 37, name: 'Western' },
   ]
+
+  const languageMap = {
+    en: 'English',
+    fr: 'French',
+    es: 'Spanish',
+    de: 'German',
+    it: 'Italian',
+    ja: 'Japanese',
+    ko: 'Korean',
+    zh: 'Chinese',
+    hi: 'Hindi',
+    ar: 'Arabic',
+    ru: 'Russian',
+  }
+  const IMAGE_PATH = 'https://image.tmdb.org/t/p/original'
   const location = useLocation()
   const movie = location.state?.movie
   if (!movie) {
@@ -42,7 +57,7 @@ const MoreInfo = ({}) => {
     )
   }
   return (
-    <div className="bg-[#111827] h-250">
+    <div className="bg-[#111827] h-300">
       <Link
         to={'/'}
         className="flex text-white pt-9 px-9 hover:text-[#EF4444] transition delay-150 duration-300 ease-in-out"
@@ -53,9 +68,9 @@ const MoreInfo = ({}) => {
       <div className="m-9">
         <div className="flex justify-center">
           <img
-            src="https://www.hollywoodreporter.com/wp-content/uploads/2014/09/interstellar_poster_0.jpg?w=1440&h=810&crop=1"
+            src={`${IMAGE_PATH}${movie.backdrop_path}`}
             alt=""
-            className="relative w-full z-0 h-[600px] bg-cover bg-center rounded-xl brightness-50"
+            className="relative w-full h-[650px] bg-cover bg-center rounded-xl brightness-50"
           />
         </div>
         <div className="flex justify-between">
@@ -94,9 +109,14 @@ const MoreInfo = ({}) => {
             </p>
             <p className="flex text-white text-sm mt-3">
               <span className="mr-1 text-gray-400">Language: </span>
-              {movie.original_language}
+              {languageMap[movie.original_language] || movie.original_language}
             </p>
           </div>
+        </div>
+        <div className="">
+          <p className="text-md text-white mt-3 md:pr-[50%]">
+            {movie?.overview}
+          </p>
         </div>
       </div>
     </div>

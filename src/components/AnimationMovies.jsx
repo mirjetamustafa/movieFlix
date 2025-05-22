@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 
 const AnimationMovies = ({ animation, genresList, getGenreNames }) => {
   return (
@@ -32,9 +33,12 @@ const AnimationMovies = ({ animation, genresList, getGenreNames }) => {
                   {getGenreNames(animations.genre_ids, genresList)}
                 </p>
               </div>
-              <button className="bg-red-600 rounded-full md:px-25 px-9 py-1 mt-3 cursor-pointer hover:bg-red-700">
+              <Link
+                to={'/moreInfo'}
+                className="bg-red-600 rounded-full md:px-25 px-9 py-1 mt-3 cursor-pointer hover:bg-red-700"
+              >
                 Play
-              </button>
+              </Link>
             </div>
           </div>
         ))}
