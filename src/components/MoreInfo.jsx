@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Link, useLocation } from 'react-router-dom'
 import { FaArrowLeft } from 'react-icons/fa'
 import { getGenreNames } from './utils'
@@ -6,6 +6,7 @@ import { RiPlayLargeLine } from 'react-icons/ri'
 import { AiOutlinePlus } from 'react-icons/ai'
 import { BiLike } from 'react-icons/bi'
 import { CiSaveUp2 } from 'react-icons/ci'
+import { useStateValue } from '../StateProvder'
 
 const MoreInfo = ({ selectedMovie }) => {
   const genresList = [
@@ -43,6 +44,26 @@ const MoreInfo = ({ selectedMovie }) => {
     ar: 'Arabic',
     ru: 'Russian',
   }
+  const [successMessage, setSuccessMessage] = useState('')
+
+  const [{ myList }, dispatch] = useStateValue()
+  const addToList = () => {
+    dispatch({
+      type: 'ADD_TO_LIST',
+      item: {
+        id: movie.id,
+        title: movie.title,
+        poster_path: movie.poster_path,
+        release_date: movie.release_date,
+        genre: getGenreNames(movie.genre_ids, genresList),
+        adult: movie.adult,
+      },
+    })
+
+    setSuccessMessage('You added successfully')
+    setTimeout(() => setSuccessMessage(''), 2000)
+  }
+
   const IMAGE_PATH = 'https://image.tmdb.org/t/p/original'
   const location = useLocation()
   const movie = location.state?.movie
@@ -96,9 +117,17 @@ const MoreInfo = ({ selectedMovie }) => {
                 <BiLike className="text-xl" />
               </button>
 
-              <button className="bg-[#1F2937] rounded-full px-3 mx-2 py-2 text-white hover:opacity-80 cursor-pointer">
+              <button
+                onClick={addToList}
+                className="bg-[#1F2937] rounded-full px-3 mx-2 py-2 text-white hover:opacity-80 cursor-pointer"
+              >
                 <CiSaveUp2 className="text-xl" />
               </button>
+              {successMessage && (
+                <p className="bg-green-600 rounded-full text-white mt- py-3 px-3 text-sm">
+                  {successMessage}
+                </p>
+              )}
             </div>
           </div>
           <div className="bg-[#1F2937] w-70 h-35 rounded-md mt-3 p-5">

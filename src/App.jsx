@@ -17,7 +17,7 @@ import {
 } from './api/api'
 import MoreInfo from './components/MoreInfo'
 
-function App() {
+function App({ genresList, getGenreNames }) {
   const [movies, setMovies] = useState([])
   const [action, setAction] = useState([])
   const [animation, setAnimation] = useState([])
@@ -181,7 +181,11 @@ function App() {
                 setSearchQuery={setSearchQuery}
                 handleSearch={handleSearch}
               />
-              <MoreInfo selectedMovie={selectedMovie} />
+              <MoreInfo
+                selectedMovie={selectedMovie}
+                genresList={genresList}
+                getGenreNames={getGenreNames}
+              />
             </>
           }
         />
