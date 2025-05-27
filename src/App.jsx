@@ -16,6 +16,7 @@ import {
   searchAll,
 } from './api/api'
 import MoreInfo from './components/MoreInfo'
+import Footer from './components/Footer'
 
 function App({ genresList, getGenreNames }) {
   const [movies, setMovies] = useState([])
@@ -130,6 +131,7 @@ function App({ genresList, getGenreNames }) {
                 loading={loading}
                 searchQuery={searchQuery}
               />
+              <Footer />
             </>
           }
         />
@@ -143,6 +145,7 @@ function App({ genresList, getGenreNames }) {
                 handleSearch={handleSearch}
               />
               <Movies movies={movies} allMovies={allMovies} />
+              <Footer />
             </>
           }
         />
@@ -156,6 +159,7 @@ function App({ genresList, getGenreNames }) {
                 handleSearch={handleSearch}
               />
               <TvShows tvShows={tvShows} />
+              <Footer />
             </>
           }
         />
@@ -169,6 +173,7 @@ function App({ genresList, getGenreNames }) {
                 handleSearch={handleSearch}
               />
               <MyList />
+              <Footer />
             </>
           }
         />
@@ -186,6 +191,7 @@ function App({ genresList, getGenreNames }) {
                 genresList={genresList}
                 getGenreNames={getGenreNames}
               />
+              <Footer />
             </>
           }
         />

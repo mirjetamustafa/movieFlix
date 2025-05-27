@@ -20,12 +20,12 @@ const BackgroundMovies = ({ movies, getGenreNames, genresList }) => {
         }}
       >
         <div className="grid content-center bg-black/30 h-full w-full rounded-xl">
-          <div className="px-15 pt-35 max-md:text-center">
-            <h1 className="text-white text-4xl font-bold">
+          <div className="px-15 pt-35 max-md:text-center ">
+            <h1 className="text-white text-4xl font-bold max-md:text-xl">
               {movie?.title || 'Loading...'}
             </h1>
             <div className="flex max-md:justify-center">
-              <p className="bg-red-600 rounded-sm px-2 py-1 mt-5 text-white text-sm">
+              <p className="bg-red-600 rounded-sm px-2 py-1 mt-5 text-white text-sm max-md:h-13">
                 {movie?.adult ? '18+' : 'PG-13'}
               </p>
               <p className="pl-4 pr-2 py-1 mt-5 text-white text-sm">
@@ -35,7 +35,7 @@ const BackgroundMovies = ({ movies, getGenreNames, genresList }) => {
                 {getGenreNames(movie?.genre_ids, genresList)}
               </p>
             </div>
-            <p className="text-md text-white mt-3 md:pr-[50%]">
+            <p className="md:text-md max-md:text-sm text-white mt-3 md:pr-[50%]">
               {movie?.overview}
             </p>
             <div className="flex max-md:justify-center">
